@@ -10,11 +10,17 @@ version 2.3.0
  npm install
  ```
  
-2. Launch development server, and open `localhost:4200` in your browser:
+2. Launch client server, and open `localhost:4200` in your browser:
  ```bash
  npm start
  ```
- 
+
+2. Launch api server (in a seperate terminal):
+ ```bash
+ nodemon ./server.js
+ ```
+
+
 # Project structure
 
 ```
