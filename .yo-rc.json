@@ -1,0 +1,17 @@
+{
+  "generator-ngx-rocket": {
+    "version": "2.3.0",
+    "props": {
+      "appName": "Cigna",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "bootstrap",
+      "auth": true,
+      "projectName": "cigna",
+      "mobile": [],
+      "webview": []
+    }
+  }
+}

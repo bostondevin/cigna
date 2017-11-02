@@ -1,0 +1,19 @@
+@import "src/theme/theme-variables";
+
+.navbar {
+  margin-bottom: $spacer;
+}
+
+.nav-link.dropdown-toggle {
+  cursor: pointer;
+}
+
+.navbar-brand {
+	background: url(/assets/cigna_footer_logo_d.png) no-repeat left center;
+	width: 200px;
+	height: 35px;
+}
+
+.nav-item .fa {
+	margin-right: 5px;
+}
