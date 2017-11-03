@@ -12,3 +12,33 @@
 
 // Theme customization
 @import "theme/theme";
+
+@import "~@swimlane/ngx-ui/release/index.css";
+
+
+.ngx-dnd-container,
+.show-outlines .root-container .ngx-dnd-container {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.show-outlines .ngx-dnd-container {
+  border: solid 3px fuschia;
+  padding: 10px;
+  margin: 10px;
+}
+
+.ngx-dnd-container.gu-empty {
+	border: dashed 3px fuschia;
+}
+
+.root-container > .ngx-dnd-container.gu-empty {
+  min-height: 100px;
+  border: dashed 3px fuschia;
+}
+
+
+.show-outlines .root-container .ngx-dnd-container.gu-empty {
+  border: dashed 3px fuschia;
+}

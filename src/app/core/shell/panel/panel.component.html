@@ -1,0 +1,17 @@
+<button (click)="hidePanel($event)"><i class="fa fa-arrow-right"></i></button>
+<button (click)="showHideOutlines($event)"><i class="fa fa-circle"></i></button>
+
+
+<ngx-dnd-container
+	class="root-container"
+	[model]="sourceBuilderTools"
+	[dropZones]="['builder-target']"
+	[copy]="true"
+	[droppableItemClass]="droppableItemClass"
+	(drag)="builderDrag($event)">
+
+	<ng-template let-item="model">
+	  <ngx-icon [fontIcon]="item.icon"></ngx-icon>
+	  {{item.name}}
+	</ng-template>
+</ngx-dnd-container>

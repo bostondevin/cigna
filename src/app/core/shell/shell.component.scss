@@ -7,3 +7,10 @@
 :host > div {
 	flex: 1;
 }
+
+
+.show-outlines .ngx-dnd-container {
+	border: dashed 3px blue;
+	padding: 10px;
+	margin: 10px;
+}

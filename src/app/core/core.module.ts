@@ -8,11 +8,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { FooterComponent } from './shell/footer/footer.component';
+import { PanelComponent } from './shell/panel/panel.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 import { I18nService } from './i18n.service';
 import { HttpService } from './http/http.service';
 import { HttpCacheService } from './http/http-cache.service';
+
+import { NgxDnDModule } from '@swimlane/ngx-dnd'
+import { NgxUIModule } from '@swimlane/ngx-ui';
+
 
 export function createHttpService(backend: ConnectionBackend,
                                   defaultOptions: RequestOptions,
@@ -26,12 +31,15 @@ export function createHttpService(backend: ConnectionBackend,
     HttpModule,
     TranslateModule,
     NgbModule,
+    NgxDnDModule,
+    NgxUIModule,
     RouterModule
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ShellComponent
+    ShellComponent,
+    PanelComponent
   ],
   providers: [
     AuthenticationService,

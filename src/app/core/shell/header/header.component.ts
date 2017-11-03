@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { I18nService } from '../../i18n.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,8 @@ import { I18nService } from '../../i18n.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Output() openPanel = new EventEmitter();
 
   menuHidden = true;
 
@@ -19,8 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() { }
 
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
+  showPanel(button: any){
+    this.openPanel.emit(button);
   }
 
   setLanguage(language: string) {

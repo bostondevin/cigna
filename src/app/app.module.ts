@@ -8,19 +8,32 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { RestangularModule, Restangular } from 'ngx-restangular';
+
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+export function RestangularConfigFactory (RestangularProvider: any) {
+  // RestangularProvider.setBaseUrl('http://api.restngx.local/v1');
+  // RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer UDXPx-Xko0w4BRKajozCVy20X11MRZs1'});
+}
+
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     TranslateModule.forRoot(),
     NgbModule.forRoot(),
+    RestangularModule.forRoot(RestangularConfigFactory),
     CoreModule,
     SharedModule,
     HomeModule,

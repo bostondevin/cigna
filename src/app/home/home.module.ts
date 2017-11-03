@@ -8,13 +8,21 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 
+import { NgxDnDModule } from '@swimlane/ngx-dnd'
+import { NgxUIModule } from '@swimlane/ngx-ui';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
+
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     CoreModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NgxDnDModule,
+    NgxUIModule,
+    FlexLayoutModule
   ],
   declarations: [
     HomeComponent

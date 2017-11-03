@@ -1,5 +1,6 @@
-<div>
-	<app-header></app-header>
+<div [ngClass]="{'show-outlines': outlineState=='on'}">
+	<app-header (openPanel)="openPanel($event)"></app-header>
 	<router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
+<app-panel [@slideInOut]="menuState" (closePanel)="closePanel($event)" (toggleOutlines)="toggleOutlines($event)"></app-panel>
