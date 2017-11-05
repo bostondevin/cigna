@@ -18,13 +18,24 @@
 
 
 <ngb-tabset>
+
   <ngb-tab>
   	<ng-template ngbTabTitle><i class="fa fa-files-o" ngbTooltip="Pages" placement="bottom"></i></ng-template>
     <ng-template ngbTabContent>
 
 
+    	<ul class="list-unstyled">
+    		<li *ngFor="let r of templates">
+
+				<mgx-icon icon="{{r[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
+				{{ r[c['Label'].sid ] }}
+
+    		</li>
+    	</ul>
+
     </ng-template>
   </ngb-tab>
+
   <ngb-tab>
   	<ng-template ngbTabTitle><i class="fa fa-cubes" ngbTooltip="Components" placement="bottom"></i></ng-template>
     <ng-template ngbTabContent>
@@ -50,6 +61,23 @@
   <ngb-tab>
   	<ng-template ngbTabTitle><i class="fa fa-database" ngbTooltip="Data" placement="bottom"></i></ng-template>
     <ng-template ngbTabContent>
+
+
+
+    	<ul class="list-unstyled">
+    		<li *ngFor="let r of collectionGroups">
+				<mgx-icon icon="{{r[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
+				{{ r[c['Label'].sid ] }}
+
+				<ul class="list-unstyled">
+					<li *ngFor="let collection of collections">
+						<mgx-icon *ngIf="collection[c['FontAwesomeIcon'].sid]" icon="{{collection[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
+						{{ collection[c['Label'].sid ] }}
+					</li>
+				</ul>
+
+    		</li>
+    	</ul>
 
 
     </ng-template>
