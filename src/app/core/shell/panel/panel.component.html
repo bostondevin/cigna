@@ -1,17 +1,64 @@
-<button (click)="hidePanel($event)"><i class="fa fa-arrow-right"></i></button>
-<button (click)="showHideOutlines($event)"><i class="fa fa-circle"></i></button>
+<div class="btn-group tool-bar" ngbDropdown>
+	<button (click)="hidePanel($event)" ngbTooltip="Hide Panel" placement="left"><i class="fa fa-arrow-right"></i></button>
+	<button (click)="undo($event)" ngbTooltip="Undo" placement="bottom"><i class="fa fa-undo"></i></button>
+	<button (click)="redo($event)" ngbTooltip="Redo" placement="bottom"><i class="fa fa-repeat"></i></button>
+	<button (click)="save($event)" ngbTooltip="Publish" placement="bottom"><i class="fa fa-save"></i></button>
+	<button (click)="zoomIn($event)" ngbTooltip="Zoom" placement="bottom"><i class="fa fa-search-plus"></i></button>
+	<button (click)="zoomOut($event)" ngbTooltip="Zoom" placement="bottom"><i class="fa fa-search-minus"></i></button>
+	<button (click)="showHideOutlines($event)" ngbTooltip="Outlines" placement="bottom"><i class="mdi mdi-select-all"></i></button>
+
+	<button ngbDropdownToggle class="last" ngbTooltip="Screen Size" placement="left"><i class="fa fa-desktop"></i></button>
+	<div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+		<button class="dropdown-item" *ngFor="let r of resolutions" (click)="setResolution(r)">
+			<mgx-icon icon="{{r[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
+			{{ r[c['Label'].sid ] }}
+		</button>
+	</div>
+</div>
 
 
-<ngx-dnd-container
-	class="root-container"
-	[model]="sourceBuilderTools"
-	[dropZones]="['builder-target']"
-	[copy]="true"
-	[droppableItemClass]="droppableItemClass"
-	(drag)="builderDrag($event)">
+<ngb-tabset>
+  <ngb-tab>
+  	<ng-template ngbTabTitle><i class="fa fa-files-o" ngbTooltip="Pages" placement="bottom"></i></ng-template>
+    <ng-template ngbTabContent>
 
-	<ng-template let-item="model">
-	  <ngx-icon [fontIcon]="item.icon"></ngx-icon>
-	  {{item.name}}
-	</ng-template>
-</ngx-dnd-container>
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+  	<ng-template ngbTabTitle><i class="fa fa-cubes" ngbTooltip="Components" placement="bottom"></i></ng-template>
+    <ng-template ngbTabContent>
+
+
+		<ngx-dnd-container
+			class="root-container"
+			[model]="sourceBuilderTools"
+			[dropZones]="['builder-target']"
+			[copy]="true"
+			[droppableItemClass]="droppableItemClass"
+			(drag)="builderDrag($event)">
+
+			<ng-template let-item="model">
+			  <ngx-icon [fontIcon]="item.icon"></ngx-icon>
+			  {{item.name}}
+			</ng-template>
+		</ngx-dnd-container>
+
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+  	<ng-template ngbTabTitle><i class="fa fa-database" ngbTooltip="Data" placement="bottom"></i></ng-template>
+    <ng-template ngbTabContent>
+
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+  	<ng-template ngbTabTitle><i class="fa fa-eye" ngbTooltip="Options" placement="bottom"></i></ng-template>
+    <ng-template ngbTabContent>
+
+
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

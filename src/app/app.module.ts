@@ -8,7 +8,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 import { RestangularModule, Restangular } from 'ngx-restangular';
+
+import { Ng2Webstorage } from 'ng2-webstorage';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -22,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function RestangularConfigFactory (RestangularProvider: any) {
   // RestangularProvider.setBaseUrl('http://api.restngx.local/v1');
-  // RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer UDXPx-Xko0w4BRKajozCVy20X11MRZs1'});
+  RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer UDXPx-Xko0w4BRKajozCVy20X11MRZs1'});
 }
 
 @NgModule({
@@ -30,7 +34,9 @@ export function RestangularConfigFactory (RestangularProvider: any) {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    Ng2Webstorage,
     HttpModule,
+    ToastModule.forRoot(),
     TranslateModule.forRoot(),
     NgbModule.forRoot(),
     RestangularModule.forRoot(RestangularConfigFactory),
@@ -42,8 +48,7 @@ export function RestangularConfigFactory (RestangularProvider: any) {
     AppRoutingModule
   ],
   declarations: [AppComponent],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

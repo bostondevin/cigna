@@ -9,6 +9,11 @@ import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { FooterComponent } from './shell/footer/footer.component';
 import { PanelComponent } from './shell/panel/panel.component';
+import { IconComponent } from './ui/icon/icon.component';
+
+import { AppService } from './appservice/app.service';
+
+
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 import { I18nService } from './i18n.service';
@@ -39,9 +44,11 @@ export function createHttpService(backend: ConnectionBackend,
     HeaderComponent,
     FooterComponent,
     ShellComponent,
-    PanelComponent
+    PanelComponent,
+    IconComponent
   ],
   providers: [
+    AppService,
     AuthenticationService,
     AuthenticationGuard,
     I18nService,

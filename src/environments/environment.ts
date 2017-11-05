@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   version: '(dev)',
-  serverUrl: '/api',
+  serverUrl: 'http://www.vcap.me:4201/api',
   defaultLanguage: 'en-US',
   supportedLanguages: [
     'en-US',

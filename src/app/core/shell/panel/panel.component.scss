@@ -10,4 +10,53 @@
   min-width: 380px;
   z-index: 9999;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
 }
+
+.dropdown-menu-right {
+  left: 215px !important;
+}
+
+.dropdown-menu {
+  background-color: #222;
+  color: #ddd;
+}
+
+.dropdown-menu button:hover {
+  background-color: #222;
+  color: #fff;
+}
+
+
+.dropdown-item {
+  color: inherit;
+}
+
+.tool-bar button {
+  padding: 15px;
+  border-right: solid 1px rgba(255,255,255,0.1);
+  outline: none;
+  font-size: 14px;
+}
+
+.tool-bar button.last {
+  border-right: none;
+}
+
+
+
+.tool-bar .dropdown-menu button {
+  padding: 5px 10px;
+  border-right: none;
+  font-size: 13px;
+}
+
+.tool-bar .dropdown-menu button mgx-icon {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+
+
+
+

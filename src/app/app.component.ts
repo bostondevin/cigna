@@ -10,6 +10,8 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs/Observable';
 
+import { AppService } from './core/appservice/app.service';
+
 import { environment } from '../environments/environment';
 import { Logger } from './core/logger.service';
 import { I18nService } from './core/i18n.service';
@@ -27,20 +29,22 @@ export class AppComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private titleService: Title,
               private translateService: TranslateService,
-              private i18nService: I18nService) { }
+              private i18nService: I18nService, 
+              private appService: AppService) { }
 
   ngOnInit() {
-    // Setup logger
-    if (environment.production) {
+
+    if (environment.production) // log.debug('init');
       Logger.enableProductionMode();
-    }
+      
 
-    log.debug('init');
+    this.appService.initiateApplication();
 
-    // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
 
     const onNavigationEnd = this.router.events.filter(event => event instanceof NavigationEnd);
+
+
 
     // Change page title on navigation or language change, based on route data
     Observable.merge(this.translateService.onLangChange, onNavigationEnd)
@@ -59,6 +63,8 @@ export class AppComponent implements OnInit {
           this.titleService.setTitle(this.translateService.instant(title));
         }
       });
+
+
   }
 
 }
