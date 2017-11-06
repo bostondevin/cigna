@@ -10,6 +10,10 @@ import { HeaderComponent } from './shell/header/header.component';
 import { FooterComponent } from './shell/footer/footer.component';
 import { PanelComponent } from './shell/panel/panel.component';
 import { IconComponent } from './ui/icon/icon.component';
+import { NavBarComponent } from './ui/navbar/navbar.component';
+
+
+
 
 import { AppService } from './appservice/app.service';
 
@@ -22,7 +26,6 @@ import { HttpCacheService } from './http/http-cache.service';
 
 import { NgxDnDModule } from '@swimlane/ngx-dnd'
 import { NgxUIModule } from '@swimlane/ngx-ui';
-
 
 export function createHttpService(backend: ConnectionBackend,
                                   defaultOptions: RequestOptions,
@@ -45,7 +48,8 @@ export function createHttpService(backend: ConnectionBackend,
     FooterComponent,
     ShellComponent,
     PanelComponent,
-    IconComponent
+    IconComponent,
+    NavBarComponent
   ],
   providers: [
     AppService,

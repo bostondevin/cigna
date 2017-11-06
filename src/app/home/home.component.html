@@ -1,5 +1,5 @@
 <ngx-dnd-container
-  class="root-container"
+  class="root-container builder"
   [model]="targetBuilderTools"
   dropZone="builder-target"
   [removeOnSpill]="true"
@@ -10,10 +10,12 @@
   (out)="log($event)"
   (remove)="log($event)">
 
+
+
   <ng-template let-model="model" let-template="template">
     <div [ngSwitch]="model.inputType">
       <div *ngSwitchCase="'section'">
-         <ngx-section class="shadow" [sectionTitle]="model.name">
+         <ngx-section class="shadow" [sectionTitle]="model.label">
            <ngx-dnd-container
              dropZone="builder-target"
              [model]="model.children"
@@ -31,13 +33,16 @@
       <div *ngSwitchDefault>
         <ngx-input
           [type]="model.inputType"
-          [hint]="model.name"
+          [hint]="model.label"
           [autofocus]="false"
           [ngModel]="model.data">
         </ngx-input>
       </div>
     </div>
   </ng-template>
+
+
+
 </ngx-dnd-container>
 
 

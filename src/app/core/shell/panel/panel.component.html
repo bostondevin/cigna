@@ -1,4 +1,4 @@
-<div class="btn-group tool-bar" ngbDropdown>
+<div class="btn-group tool-bar" ngbDropdown (window:resize)="onResize($event)">
 	<button (click)="hidePanel($event)" ngbTooltip="Hide Panel" placement="left"><i class="fa fa-arrow-right"></i></button>
 	<button (click)="undo($event)" ngbTooltip="Undo" placement="bottom"><i class="fa fa-undo"></i></button>
 	<button (click)="redo($event)" ngbTooltip="Redo" placement="bottom"><i class="fa fa-repeat"></i></button>
@@ -24,14 +24,77 @@
     <ng-template ngbTabContent>
 
 
-    	<ul class="list-unstyled">
-    		<li *ngFor="let r of templates">
 
-				<mgx-icon icon="{{r[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
-				{{ r[c['Label'].sid ] }}
 
-    		</li>
-    	</ul>
+		<button (click)="newCollection()" class="pull-right mr-2 mt-2 btn btn-default btn-sm" ngbTooltip="New Data" placement="left"><i class="fa fa-fw fa-plus"></i></button>
+		
+		<h3 class="tabtitle"><a href="#"><mgx-icon icon="fa-files-o"></mgx-icon>Pages</a></h3>
+
+
+
+
+		<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0, ngb-panel-1" [ngStyle]="{'height.px': (windowHeight - 133), 'overflow': 'auto'}">
+
+			<ngb-panel class="navigation-panel">
+				<ng-template ngbPanelTitle>
+					<mgx-icon icon="fa-sitemap"></mgx-icon>Navigation
+				</ng-template>
+				<ng-template ngbPanelContent>
+
+					<ngx-dnd-container
+					class="navigation-panel root-container"
+					[model]="navigation"
+					dropZone="navigationTree">
+						<ng-template let-item="model">
+							<ng-container>
+								<div class="ngx-dnd-content">
+
+									<span class="pull-right mr-1">
+										<a href="#" ngbTooltip="Remove" placement="left"><i class="fa fa-times"></i></a>
+									</span>
+
+									<mgx-icon icon="{{item.icon}}"></mgx-icon>{{item.label}}</div>
+								<!--ngx-dnd-container
+									[model]="model.children"
+									[template]="container.template"
+									[removeOnSpill]="removeOnSpill">
+								</ngx-dnd-container -->
+							</ng-container>
+						</ng-template>
+					</ngx-dnd-container>
+
+				</ng-template>
+			</ngb-panel>
+
+			<ngb-panel>
+			    <ng-template ngbPanelTitle>
+			    	<mgx-icon icon="fa-files-o"></mgx-icon>Pages
+			    </ng-template>
+			    <ng-template ngbPanelContent>
+			    	<ngx-dnd-container
+						class="pages-panel root-container"
+						[model]="templates"
+						[dropZones]="['navigationTree']"
+						[copy]="true"
+						[droppableItemClass]="droppableItemClass"
+						(drag)="builderDrag($event)">					
+						<ng-template let-item="model">
+							<span class="pull-right mr-1">
+								<a href="#" class="mr-2" ngbTooltip="Settings" placement="left"><i class="fa fa-gear"></i></a>
+								<a href="#" ngbTooltip="Remove" placement="left"><i class="fa fa-trash"></i></a>
+							</span>
+							<mgx-icon icon="{{item.icon}}"></mgx-icon>{{item.label}}
+						</ng-template>
+					</ngx-dnd-container>
+			    </ng-template>
+			  </ngb-panel>
+		</ngb-accordion>
+
+
+
+
+
+
 
     </ng-template>
   </ngb-tab>
@@ -40,21 +103,54 @@
   	<ng-template ngbTabTitle><i class="fa fa-cubes" ngbTooltip="Components" placement="bottom"></i></ng-template>
     <ng-template ngbTabContent>
 
+ 
 
-		<ngx-dnd-container
-			class="root-container"
-			[model]="sourceBuilderTools"
-			[dropZones]="['builder-target']"
-			[copy]="true"
-			[droppableItemClass]="droppableItemClass"
-			(drag)="builderDrag($event)">
 
-			<ng-template let-item="model">
-			  <ngx-icon [fontIcon]="item.icon"></ngx-icon>
-			  {{item.name}}
-			</ng-template>
-		</ngx-dnd-container>
+		<button (click)="newComponent()" class="pull-right mr-2 mt-2 btn btn-default btn-sm" ngbTooltip="New Component" placement="left"><i class="fa fa-fw fa-plus"></i></button>
+		
+		<h3 class="tabtitle"><a href="#"><mgx-icon icon="fa-cubes"></mgx-icon>Components</a></h3>
 
+		<div [ngStyle]="{'height.px': (windowHeight - 133), 'overflow': 'auto'}">
+
+			<ngb-accordion #acc="ngbAccordion"> 
+			  <ngb-panel *ngFor="let componentGroup of componentGroups">
+			    <ng-template ngbPanelTitle>
+			    	<mgx-icon icon="{{componentGroup[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>{{ componentGroup[c['Label'].sid ] }}
+			    </ng-template>
+			    <ng-template ngbPanelContent>
+
+
+			    	<ul class="list-unstyled">
+			    		<li *ngFor="let component of components">
+
+	                    	<a href="#" ngbTooltip="Settings" placement="left" class="showOnHover pull-right"><i class="fa fa-gear"></i></a>
+
+			    			<a href="#">
+								<mgx-icon icon="{{component[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>{{ component[c['Label'].sid ] }}
+							</a>
+
+			    		</li>
+			    	</ul>
+
+			    </ng-template>
+			  </ngb-panel>
+			</ngb-accordion>
+
+			<ngx-dnd-container
+				class="root-container"
+				[model]="navigation"
+				[dropZones]="['builder-target']"
+				[copy]="true"
+				[droppableItemClass]="droppableItemClass"
+				(drag)="builderDrag($event)">
+
+				<ng-template let-item="model">
+				  <ngx-icon [fontIcon]="item.icon"></ngx-icon>
+				  {{item.label}}
+				</ng-template>
+			</ngx-dnd-container>
+
+		</div>
 
     </ng-template>
   </ngb-tab>
@@ -64,20 +160,35 @@
 
 
 
-    	<ul class="list-unstyled">
-    		<li *ngFor="let r of collectionGroups">
-				<mgx-icon icon="{{r[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
-				{{ r[c['Label'].sid ] }}
 
-				<ul class="list-unstyled">
-					<li *ngFor="let collection of collections">
-						<mgx-icon *ngIf="collection[c['FontAwesomeIcon'].sid]" icon="{{collection[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
-						{{ collection[c['Label'].sid ] }}
-					</li>
-				</ul>
+		<button (click)="newCollection()" class="pull-right mr-2 mt-2 btn btn-default btn-sm" ngbTooltip="New Data" placement="left"><i class="fa fa-fw fa-plus"></i></button>
+		
+		<h3 class="tabtitle"><a href="#"><mgx-icon icon="fa-database"></mgx-icon>Data</a></h3>
 
-    		</li>
-    	</ul>
+
+		<ngb-accordion #acc="ngbAccordion" [ngStyle]="{'height.px': (windowHeight - 133), 'overflow': 'auto'}"> <!--  activeIds="ngb-panel-0" -->
+		  <ngb-panel *ngFor="let collectionGroup of collectionGroups">
+		    <ng-template ngbPanelTitle>
+		    	<mgx-icon icon="{{collectionGroup[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>
+				{{ collectionGroup[c['Label'].sid ] }}
+		    </ng-template>
+		    <ng-template ngbPanelContent>
+		    	<ul class="list-unstyled">
+		    		<li *ngFor="let collection of collections">
+
+                    	<a href="#" ngbTooltip="Settings" placement="left" class="showOnHover pull-right"><i class="fa fa-gear"></i></a>
+
+		    			<a href="#">
+							<mgx-icon *ngIf="collection[c['FontAwesomeIcon'].sid]" icon="{{collection[c['FontAwesomeIcon'].sid][c['ClassName'].sid]}}"></mgx-icon>{{ collection[c['Label'].sid ] }}
+						</a>
+		    		</li>
+		    	</ul>
+		    </ng-template>
+		  </ngb-panel>
+		</ngb-accordion>
+
+
+
 
 
     </ng-template>
@@ -85,7 +196,13 @@
   <ngb-tab>
   	<ng-template ngbTabTitle><i class="fa fa-eye" ngbTooltip="Options" placement="bottom"></i></ng-template>
     <ng-template ngbTabContent>
+		
+		<h3 class="tabtitle"><a href="#"><mgx-icon icon="fa-eye"></mgx-icon>Options</a></h3>
 
+		<div [ngStyle]="{'height.px': (windowHeight - 133), 'overflow': 'auto'}">
+
+			
+		</div>
 
     </ng-template>
   </ngb-tab>

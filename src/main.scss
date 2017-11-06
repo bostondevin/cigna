@@ -26,6 +26,11 @@
 
 
 
+.ngx-dnd-container:nth-child(odd) {
+  background-color: transparent !important;
+}
+
+/*
 
 .ngx-dnd-container,
 .ngx-dnd-item {
@@ -52,32 +57,254 @@
   padding: 10px !important;
 }
 
+*/
 
 
 
-
-
-
-
-
-app-panel {
-  font-size: 13px;
+app-panel .pages-panel .ngx-dnd-container {
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
+
+app-panel .pages-panel .ngx-dnd-item {
+	border: none !important;
+	padding: 5px 10px !important;
+	margin: 0 !important;
+}
+
+app-panel .pages-panel .ngx-dnd-item .ngx-icon {
+	margin-right: 5px;
+}
+
+app-panel .pages-panel .ngx-dnd-item:hover {
+	border: none;
+	background-color: rgba(0,0,0,0.5);
+}
+
+
+
+
+
+
+app-panel .navigation-panel .ngx-dnd-container {
+	border-color: transparent !important;
+	border-style: none !important;
+	border-width: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	min-height: 5px;
+}
+
+app-panel .navigation-panel.root-container > .ngx-dnd-container  {
+	min-height: 50px;
+}
+
+app-panel .navigation-panel.root-container > .ngx-dnd-container.gu-empty {
+	border-color: rgba(255,255,255,0.2) !important;
+	border-style: dashed !important;
+	border-width: 1px !important;
+}
+
+app-panel .navigation-panel .ngx-dnd-item {
+	border: none !important;
+	padding: 5px 10px !important;
+	margin: 0 !important;
+}
+
 
 app-panel .ngx-dnd-item {
-  border: none;
-  padding: 5px 10px;
-  margin: 0;
+	font-size: 12px;
+	background-color: transparent;
 }
 
-app-panel .ngx-dnd-item .ngx-icon {
-  margin-right: 5px;
+app-panel mgx-icon {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+app-panel .ngx-dnd-item a {
+	color: rgba(255,255,255,0.8);
+}
+
+app-panel .ngx-dnd-item a:hover {
+	color: rgba(255,255,255,1);
 }
 
 app-panel .ngx-dnd-item:hover {
-  border: none;
-  background-color: rgba(0,0,0,0.5);
+	border: none;
+	background-color: rgba(0,0,0,0.5);
 }
+
+
+
+
+
+
+/*
+.builder .ngx-dnd-container {
+	border-color: transparent !important;
+	border-style: none !important;
+	border-width: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	min-height: 20px;
+}
+
+*/
+
+
+
+.builder .ngx-input .ngx-input-wrap .ngx-input-box-wrap .ngx-input-box, 
+.builder .ngx-input .ngx-input-wrap .ngx-input-box-wrap .ngx-input-textarea {
+	color: inherit;
+}
+
+
+.builder .ngx-dnd-container {
+	border-width: 0 !important;
+}
+
+.show-outlines .builder .ngx-dnd-container {
+	border-color: rgba(0,0,0,0.2) !important;
+	border-style: dashed !important;
+	border-width: 2px !important;
+}
+
+
+.builder .ngx-dnd-item {
+	background-color: transparent;
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.builder .ngx-dnd-container.gu-empty {
+	min-height: 50px;
+}
+
+.builder.root-container > .ngx-dnd-container {
+	border-width: 0 !important;
+	background-color: transparent !important;
+	min-height: 0px;
+	margin: 0 !important;
+}
+
+.show-outlines .builder.root-container > .ngx-dnd-container.gu-empty {
+	border-width: 2px !important;
+	background-color: rgba(0,0,0,0.1) !important;
+	min-height: 300px;
+	margin: 10px !important;
+}
+
+
+
+
+
+
+app-panel .btn-sm {
+	font-size: 12px;
+	outline: none;
+}
+
+app-panel {
+}
+
+app-panel .card-body .showOnHover {
+  visibility: hidden;
+}
+
+app-panel .card-body li:hover .showOnHover {
+  visibility: visible;
+}
+
+
+app-panel ngb-accordion {
+	display: block;
+	overflow: auto;
+}
+
+app-panel ngb-accordion .card {
+	background-color: transparent;
+	border-top: none;
+}
+
+app-panel .card-header:first-child {border-radius: none}
+
+app-panel ngb-accordion .card-header {
+	background-color: rgba(0,0,0,0.3);
+}
+
+app-panel .card-body {
+	font-size: 13px;
+	padding: 5px 5px 10px 5px;
+}
+
+app-panel ngb-accordion .card-body li {
+	float: left;
+	width: 180px;
+}
+
+app-panel ngb-accordion .card-body li a {
+	padding: 2px 5px;
+	display: block;
+	color: rgba(255,255,255,0.8);;
+}
+
+app-panel ngb-accordion .card-body li a:hover {
+	background-color: rgba(0,0,0,0.2);
+	text-decoration: none;
+	color: rgba(255,255,255,1);;
+}
+
+app-panel .tabtitle {
+	font-size: 24px;
+	padding-top: 10px;
+	padding-left: 10px;
+	text-shadow: -1px -1px 0 rgba(0,0,0,0.3)
+}
+
+app-panel .tabtitle a {
+	color: rgba(255,255,255,0.9);
+	font-weight: 200;
+    letter-spacing: 1px;
+}
+
+app-panel .tabtitle a .fa {
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+app-panel .btn-default {
+	color: inherit; 
+	outline: none; 
+	background-color: #333 !important; 
+	background-image: none;
+}
+
+app-panel .tabtitle a:hover {
+	color: rgba(255,255,255,1)
+}
+
+
+app-panel ngb-accordion .card-header a {
+	padding: 5px 10px;
+	color: rgba(255,255,255,0.7);
+	display: block;
+}
+
+app-panel ngb-accordion .card-header a:hover {
+	text-decoration: none;
+	background-color: rgba(0,0,0,0.4);
+	color: rgba(255,255,255,0.8);
+}
+
+app-panel ngb-accordion .card-header {
+	text-transform: uppercase;
+	padding: 0 0;
+}
+
+
 
 
 
@@ -110,5 +337,12 @@ app-panel ngb-tabset .nav-tabs .nav-item.show .nav-link {
   background-color: rgba(0,0,0,0.4);
   color: rgba(255,255,255,0.8);
 }
+
+app-panel .tab-content {
+	font-size: 13px;
+	background-color: rgba(0,0,0,0.4);
+}
+
+
 
 

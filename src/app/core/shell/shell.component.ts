@@ -81,7 +81,7 @@ export class ShellComponent implements OnInit {
       if (d.hasOwnProperty(this.c['Width'].sid)){
         this.resolutionWidth = d[this.c['Width'].sid];
       } else {
-        this.resolutionWidth = undefined;
+        this.resolutionWidth = null;
       }
 
     } else {
@@ -99,7 +99,7 @@ export class ShellComponent implements OnInit {
 
     this.resolutionHeight = d[this.c['Height'].sid];
 
-    this.appService.saveLocal('resolutionWidth', this.resolutionWidth);
+    this.appService.saveLocal('resolutionWidth', this.resolutionWidth );
     this.appService.saveLocal('resolutionHeight', this.resolutionHeight);
 
   }
