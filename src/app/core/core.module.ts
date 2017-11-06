@@ -24,6 +24,8 @@ import { I18nService } from './i18n.service';
 import { HttpService } from './http/http.service';
 import { HttpCacheService } from './http/http-cache.service';
 
+import { FilterPipe} from './filter.pipe';
+
 import { NgxDnDModule } from '@swimlane/ngx-dnd'
 import { NgxUIModule } from '@swimlane/ngx-ui';
 
@@ -49,7 +51,8 @@ export function createHttpService(backend: ConnectionBackend,
     ShellComponent,
     PanelComponent,
     IconComponent,
-    NavBarComponent
+    NavBarComponent,
+    FilterPipe
   ],
   providers: [
     AppService,

@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output, HostListener } from '@angular/
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppService } from '../../appservice/app.service';
+
+
 import { Observable, ReplaySubject } from 'rxjs';
 import 'rxjs/add/observable/zip';
 
@@ -298,7 +300,6 @@ export class PanelComponent implements OnInit {
   }
 
   setResolution(resolution: any){
-    console.log('Width ' + resolution[this.c['Width'].sid]);
     this.changeResolution.emit(resolution);
   }
 

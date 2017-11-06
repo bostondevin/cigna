@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 

@@ -121,7 +121,7 @@
 
 
 			    	<ul class="list-unstyled">
-			    		<li *ngFor="let component of components">
+			    		<li *ngFor="let component of components | GroupFilter: c['ComponentGroup'].sid : componentGroup._id">
 
 	                    	<a href="#" ngbTooltip="Settings" placement="left" class="showOnHover pull-right"><i class="fa fa-gear"></i></a>
 
@@ -174,7 +174,7 @@
 		    </ng-template>
 		    <ng-template ngbPanelContent>
 		    	<ul class="list-unstyled">
-		    		<li *ngFor="let collection of collections">
+		    		<li *ngFor="let collection of collections | GroupFilter: c['NavigationGroup'].sid : collectionGroup._id">
 
                     	<a href="#" ngbTooltip="Settings" placement="left" class="showOnHover pull-right"><i class="fa fa-gear"></i></a>
 
